@@ -1,5 +1,5 @@
 name: 'GitHub Action for Yarn'
-description: 'Wraps the yarn CLI to enable common yarn commands'
+description: 'Wraps the yarn CLI to enable common yarn commands (Now with git access for bower :tada:)'
 branding:
   icon: 'package'
   color: 'blue'
@@ -11,6 +11,10 @@ inputs:
     description: 'NPM_AUTH_TOKEN'
   registry-url:
     description: 'NPM_REGISTRY_URL'
+  git-oauth-key:
+    description: 'The git oauth key'
+  git-user:
+    description: 'github user'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -19,3 +23,5 @@ runs:
   env:
     NPM_AUTH_TOKEN: ${{ inputs.auth-token }}
     NPM_REGISTRY_URL: ${{ inputs.registry-url }}
+    GIT_OAUTH_KEY: ${{ inputs.git-oauth-key }}
+    GIT_USER: ${{ inputs.git-user }}

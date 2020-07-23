@@ -19,4 +19,10 @@ if [ -n "$NPM_AUTH_TOKEN" ]; then
   chmod 0600 "$NPM_CONFIG_USERCONFIG"
 fi
 
+if [ -n "$GIT_OAUTH_KEY" ]; then
+  echo "Setting up git..."
+  echo "https://$GIT_USER:$GIT_OAUTH_KEY@github.com" > ~/.git-credentials
+  echo "Done for user $GIT_USER"
+fi
+
 sh -c "yarn $*"

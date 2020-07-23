@@ -21,7 +21,7 @@ fi
 
 if [ -n "$GIT_OAUTH_KEY" ]; then
   echo "Setting up git..."
-  echo "https://$GIT_USER:$GIT_OAUTH_KEY@github.com" > ~/.git-credentials
+  echo "https://$GIT_USER:$GIT_OAUTH_KEY@$GIT_REPO" > ~/.git-credentials
   echo "Done for user $GIT_USER"
 fi
 

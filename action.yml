@@ -15,6 +15,8 @@ inputs:
     description: 'The git oauth key'
   git-user:
     description: 'github user'
+  git-repo:
+    description: 'github repo'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -25,3 +27,4 @@ runs:
     NPM_REGISTRY_URL: ${{ inputs.registry-url }}
     GIT_OAUTH_KEY: ${{ inputs.git-oauth-key }}
     GIT_USER: ${{ inputs.git-user }}
+    GIT_REPO: ${{ inputs.git-repo }}

@@ -21,11 +21,11 @@ fi
 
 if [ -n "$GIT_OAUTH_KEY" ]; then
   echo "Setting up git..."
-  git config --global url.https://github.com/.insteadOf ssh://git@github.com/ 
-  git config --global --add url.https://github.com/.insteadOf git@github.com:
+  #git config --global url.https://github.com/.insteadOf ssh://git@github.com/ 
+  #git config --global --add url.https://github.com/.insteadOf git@github.com:
   # Write docker machine urls using netrc
   echo -e "machine github.com\n  login $GIT_USER\n  password $GIT_OAUTH_KEY" > ~/.netrc
-  
+
   echo "Done for user $GIT_USER"
 fi
 

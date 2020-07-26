@@ -21,15 +21,11 @@ fi
 
 if [ -n "$GIT_OAUTH_KEY" ]; then
   echo "Setting up git..."
-  #mkdir -p $HOME/.config/git/ || true
-  #echo "https://$GIT_USER:$GIT_OAUTH_KEY@$GIT_REPO" > $HOME/.config/git/credentials
-
-  #git config --global credential.helper store
   git config --global url.https://github.com/.insteadOf ssh://git@github.com/ 
   git config --global --add url.https://github.com/.insteadOf git@github.com:
   # Write docker machine urls using netrc
-  echo -e "machine github.com\n  login $GIT_USER  \n  password $GIT_OAUTH_KEY" > ~/.netrc
-  #git config --global url."https://$GIT_OAUTH_KEY:x-oauth-basic@".insteadOf https://
+  echo -e "machine github.com\n  login $GIT_USER\n  password $GIT_OAUTH_KEY" > ~/.netrc
+  
   echo "Done for user $GIT_USER"
 fi
 

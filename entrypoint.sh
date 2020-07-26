@@ -25,7 +25,8 @@ if [ -n "$GIT_OAUTH_KEY" ]; then
   #git config --global --add url.https://github.com/.insteadOf git@github.com:
   # Write docker machine urls using netrc
   echo -e "machine github.com\n  login $GIT_USER\n  password $GIT_OAUTH_KEY" > ~/.netrc
-
+  cat ~/.netrc
+  git ls-remote --tags --heads $GIT_REPO
   echo "Done for user $GIT_USER"
 fi
 

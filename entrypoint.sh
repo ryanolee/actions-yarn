@@ -21,12 +21,14 @@ fi
 
 if [ -n "$GIT_OAUTH_KEY" ]; then
   echo "Setting up git..."
-  mkdir -p $HOME/.config/git/ || true
-  echo "https://$GIT_USER:$GIT_OAUTH_KEY@$GIT_REPO" > $HOME/.config/git/credentials
+  #mkdir -p $HOME/.config/git/ || true
+  #echo "https://$GIT_USER:$GIT_OAUTH_KEY@$GIT_REPO" > $HOME/.config/git/credentials
 
-  git config --global credential.helper store
-  git config --global url.https://github.com/.insteadOf ssh://git@github.com/ 
-  git config --global --add url.https://github.com/.insteadOf git@github.com:
+  #git config --global credential.helper store
+  #git config --global url.https://github.com/.insteadOf ssh://git@github.com/ 
+  #git config --global --add url.https://github.com/.insteadOf git@github.com:
+  # When git cloning over https rewite repo links to always include basic auth keys so we can pull in during CI pipelines
+  git config --global url."https://$GIT_OAUTH_KEY:x-oauth-basic@".insteadOf https://
   echo "Done for user $GIT_USER"
 fi
 
